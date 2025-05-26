@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/theme/app_elevated_button_theme.dart';
-import 'package:gutty/core/ui/theme/app_text_theme.dart';
 
 class AppLightTheme {
   static ThemeData lighTheme = ThemeData(
@@ -9,12 +7,19 @@ class AppLightTheme {
     fontFamily: "Ubuntu",
     brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
+      titleSpacing: 0,
       backgroundColor: AppColor.white,
       elevation: 0,
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primary),
 
-    textTheme: AppTextTheme.textTheme(),
-    elevatedButtonTheme: AppElevatedButtonTheme.elevatedButtonTheme,
+    textTheme: ThemeData.light().textTheme.apply(bodyColor: AppColor.black),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        focusColor: AppColor.transparent,
+        hoverColor: AppColor.transparent,
+        highlightColor: AppColor.transparent,
+      ),
+    ),
   );
 }

@@ -4,8 +4,9 @@ import 'package:gutty/core/di/setup.dart';
 import 'package:gutty/core/routing/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gutty/core/ui/theme/app_light_theme.dart';
-import 'package:gutty/module/auth/login/meal_login_screen.dart';
-import 'core/lang/generated/l10n.dart';
+import 'package:gutty/generated/l10n.dart';
+import 'package:gutty/module/detail_screen/detail_screen.dart';
+import 'package:gutty/module/layout_screen/layout_screen.dart';
 
 void main() async {
   await setupApp();
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            initialRoute: LoginScreen.loginScreen,
+            initialRoute: LayoutScreen.routeName,
           ),
     );
   }
