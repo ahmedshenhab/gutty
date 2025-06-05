@@ -1,0 +1,23 @@
+{
+  "enterPhone": "أدخل رقم هاتفك",
+  "enterName": "أدخل اسم المستخدم",
+  "enterPassword": "أدخل كلمة المرور",
+  "signIn": "تسجيل الدخول",
+  "signUp": "إنشاء حساب",
+  "phoneNumber": "رقم الهاتف",
+  "enterValidphone": "أدخل رقم هاتف صالح",
+  "enterValidPassword": "يجب أن تكون كلمة المرور 8 أحرف على الأقل، وتشمل حرف كبير وصغير ورقم ورمز خاص",
+
+  "userName": "اسم المستخدم",
+  "password": "كلمة المرور",
+  "firstName": "الاسم الأول",
+  "middleName": "اسم الأب",
+  "lastName": "اسم العائلة",
+  "mainAddress": "العنوان الرئيسي",
+
+  "enterMainAddress": "أدخل العنوان الرئيسي",
+  "enterFirstName": "أدخل الاسم الأول",
+  "enterMiddleName": "أدخل اسم الأب",
+  "enterLastName": "أدخل اسم العائلة",
+  "inValidEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+}

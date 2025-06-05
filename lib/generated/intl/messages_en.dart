@@ -22,9 +22,58 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "email": MessageLookupByLibrary.simpleMessage("Email"),
-    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "enterFirstName": MessageLookupByLibrary.simpleMessage(
+      "Enter your first name",
+    ),
+    "enterLastName": MessageLookupByLibrary.simpleMessage(
+      "Enter your last name",
+    ),
+    "enterMainAddress": MessageLookupByLibrary.simpleMessage(
+      "Enter your main address",
+    ),
+    "enterMiddleName": MessageLookupByLibrary.simpleMessage(
+      "Enter your middle name",
+    ),
+    "enterName": MessageLookupByLibrary.simpleMessage("Enter your username"),
+    "enterPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter your password",
+    ),
+    "enterPhone": MessageLookupByLibrary.simpleMessage(
+      "Enter your phone number",
+    ),
+    "enterValidPassword": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 8 characters long, include uppercase, lowercase, number, and special character",
+    ),
+    "enterValidphone": MessageLookupByLibrary.simpleMessage(
+      " Enter a valid phone number",
+    ),
+    "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+    "inValidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
+      "Invalid phone or password",
+    ),
+    "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+    "mainAddress": MessageLookupByLibrary.simpleMessage("Main Address"),
+    "middleName": MessageLookupByLibrary.simpleMessage("Middle Name"),
+    "oppsTryLater": MessageLookupByLibrary.simpleMessage(
+      "Opps, try again later",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
-    "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage(" Phone Number"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "signInToContinue": MessageLookupByLibrary.simpleMessage(
+      "Sign In to continue",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "signUpToContinue": MessageLookupByLibrary.simpleMessage(
+      "Sign Up to continue",
+    ),
+    "userName": MessageLookupByLibrary.simpleMessage("User Name"),
+    "welcom": MessageLookupByLibrary.simpleMessage("Welcome"),
   };
 }

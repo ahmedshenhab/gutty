@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
 import 'package:gutty/core/ui/style/app_text_style.dart';
 import 'package:gutty/module/detail_screen/widget/ingrediant_list.dart';
-import 'package:gutty/module/detail_screen/widget/nutrition_fact.dart';
 import 'package:gutty/module/detail_screen/widget/static_content.dart';
 
 class DetailScreen extends StatelessWidget {

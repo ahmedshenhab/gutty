@@ -3,6 +3,9 @@ import 'package:gutty/core/ui/style/app_color.dart';
 
 class AppLightTheme {
   static ThemeData lighTheme = ThemeData(
+    progressIndicatorTheme:  const ProgressIndicatorThemeData(
+      color: AppColor.primary
+    ),
     scaffoldBackgroundColor: AppColor.white,
     fontFamily: "Ubuntu",
     brightness: Brightness.light,

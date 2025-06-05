@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_redundant_argument_values
 
 
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:gutty/core/app_constant.dart';
-import 'package:gutty/core/di/setup.dart';
+import 'package:gutty/core/di/di.dart';
 import 'package:gutty/core/network/remote/api_endpoint.dart';
 import 'package:gutty/core/network/remote/interceptor/app_interceptor.dart';
 import 'package:gutty/core/network/remote/interceptor/logger_interceptor.dart';

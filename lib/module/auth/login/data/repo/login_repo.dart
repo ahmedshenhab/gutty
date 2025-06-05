@@ -1,27 +1,36 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:gutty/core/lang/localization_service.dart';
 import 'package:gutty/core/network/remote/api_endpoint.dart';
-import '../model/login_error_model/login_error_handler.dart';
-import '../model/login_error_model/login_error_model.dart';
-import '../model/login_request/login_model_request.dart';
-import '../model/login_response/login_model_response.dart';
+import 'package:gutty/core/network/remote/api_error_handler.dart';
+import 'package:gutty/core/network/remote/api_error_model.dart';
+import '../model/login_response/login_response_model.dart';
 
 class LoginRepo {
   LoginRepo({required Dio dio}) : _dio = dio;
 
   final Dio _dio;
 
-  Future<Either<LoginErrorModel, LoginModelResponse>> loginUser(
-    LoginModelRequest data,
+  Future<Either<ApiErrorModel, String>> loginUser(
+    Map<String, dynamic> data,
   ) async {
     try {
-      final result = await _dio.post(ApiEndpoint.login, data: data.toJson());
+      final result = await _dio.post(ApiEndpoint.login, data: data);
 
-      return right(LoginModelResponse.fromJson(result.data));
+      
+      final token = LoginResponseModel.fromJson(result.data).token;
+      if (token != null) {
+        return right( token);
+      }
+
+      return left(ApiErrorModel(message:  LocalizationService.strings.oppsTryLater ));
+
+      
     } catch (e) {
-      return left(LoginErrorHandler.handle(e));
+      if (e is DioException && e.response?.statusCode == 400) {
+        return left(ApiErrorModel(message:  LocalizationService.strings.inValidEmailOrPassword ));
+      }
+      return left(ApiErrorHandler.handle(e));
     }
   }
-
- }
+}

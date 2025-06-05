@@ -19,14 +19,31 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List screens = [
+    List<Widget> screens = [
       const HomeLayout(),
 
       const MenuLayout(),
       const SubscriptionLayout(),
     ];
+    List<PreferredSizeWidget?> appBars = [
+      null,
+      AppBar(
+      
+        scrolledUnderElevation: 0,
+
+        title: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          child: Text(
+            'meals',
+            style: AppTextStyle.font24Bold.copyWith(color: AppColor.primary),
+          ),
+        ),
+      ),
+      AppBar(title: const Text('Subscription')),
+    ];
     return Scaffold(
-      body: screens[index],
+      appBar: appBars[index],
+      body: SafeArea(child: screens[index]),
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

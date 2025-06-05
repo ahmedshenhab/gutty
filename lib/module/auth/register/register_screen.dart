@@ -6,16 +6,16 @@ import 'package:gutty/core/reusable/custom_elevated_button.dart';
 import 'package:gutty/core/ui/style/app_color.dart';
 import 'package:gutty/core/ui/style/app_text_style.dart';
 import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/auth/login/cubit/cubit.dart';
-import 'package:gutty/module/auth/login/cubit/states.dart';
-import 'package:gutty/module/auth/login/widget/login_listner.dart';
-import 'package:gutty/module/auth/register/register_screen.dart';
-import 'widget/login_form.dart';
+import 'package:gutty/module/auth/login/meal_login_screen.dart';
+import 'package:gutty/module/auth/register/cubit/cubit.dart';
+import 'package:gutty/module/auth/register/cubit/states.dart';
+import 'package:gutty/module/auth/register/widget/register_form.dart';
+import 'package:gutty/module/auth/register/widget/register_listner.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
-  static const String routeName = '/loginScreen';
+  static const String routeName = '/RegisterScreen';
 
   @override
   Widget build(BuildContext context) {
@@ -36,36 +36,36 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Text(loc.welcom, style: AppTextStyle.font24Regular),
                 Text(
-                  loc.signInToContinue,
+                  loc.signUpToContinue,
                   style: AppTextStyle.font16Regular.copyWith(
                     color: AppColor.darkgray,
                   ),
                 ),
 
-                SizedBox(height: 53.h),
-                const LoginForm(),
-                SizedBox(height: 32.h),
+                SizedBox(height: mediaQuery.size.height * 0.03),
+                const RegisterForm(),
+                SizedBox(height: mediaQuery.size.height * 0.04),
 
-                // Sign In Button
-                BlocBuilder<LoginCubit, MealLoginStates>(
+                // Sign Up Button
+                BlocBuilder<RegisterCubit, MealRegisterStates>(
                   buildWhen:
                       (previous, current) =>
-                          current is MealLoginLoadingState ||
-                          current is MealLoginSuccessState ||
-                          current is MealLoginErrorState,
+                          current is MealRegisterLoadingState ||
+                          current is MealRegisterSuccessState ||
+                          current is MealRegisterErrorState,
                   builder: (context, state) {
                     return CustomElevatedButton(
                       onPressed:
-                          state is MealLoginLoadingState
+                          state is MealRegisterLoadingState
                               ? null
                               : () {
-                                LoginCubit.get(context).loginUser();
+                                RegisterCubit.get(context).registerUser();
                               },
                       child:
-                          state is MealLoginLoadingState
+                          state is MealRegisterLoadingState
                               ? const CircularProgressIndicator()
                               : Text(
-                                loc.signIn,
+                                loc.signUp,
                                 style: AppTextStyle.font16Regular.copyWith(
                                   color: AppColor.white,
                                 ),
@@ -76,24 +76,25 @@ class LoginScreen extends StatelessWidget {
 
                 SizedBox(height: 16.h),
 
-                // Don't Have Account? Sign Up
+                // Have Account? Sign In
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      loc.dontHaveAccount,
+                      loc.alreadyHaveAccount,
                       style: AppTextStyle.font14Regular.copyWith(
                         color: AppColor.darkgray,
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navigate to register screen
-                        Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
-                        // Or use your preferred navigation method
+                        // Navigate to login screen
+                        Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                        // Or use your preferred navigation method:
+                        // Navigator.pop(context);
                       },
                       child: Text(
-                        loc.signUp,
+                        loc.signIn,
                         style: AppTextStyle.font16Bold.copyWith(
                           color: AppColor.primary,
 
@@ -105,9 +106,8 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
 
-                const LoginListner(),
-
-                SizedBox(height: 20.h),
+                SizedBox(height: mediaQuery.size.height * 0.02),
+                const RegisterListner(),
               ],
             ),
           ),

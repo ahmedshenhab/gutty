@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gutty/core/reg_ex.dart';
+import 'package:gutty/core/ui/style/app_color.dart';
+import 'package:gutty/core/ui/style/app_text_style.dart';
 import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/reusable/custom_text_form_field.dart';
+import 'package:gutty/module/auth/custom_title_and_custom_field.dart';
 import '../cubit/cubit.dart';
-import 'login_listner.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -17,55 +19,77 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     final cubit = LoginCubit.get(context);
     final localization = S.of(context);
 
     return Form(
       autovalidateMode: AutovalidateMode.disabled,
       key: cubit.formState,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            CustomTextFormField(
-              hintText: localization.email,
-              controller: cubit.emailController,
-
-              type: TextInputType.name,
-              validator: (value) {
-                return null;
-              },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //phone
+          CustomTitleAndCustomField(
+            type:  TextInputType.phone,
+            
+            hintStyle: AppTextStyle.font14Regular.copyWith(
+              color: AppColor.darkgray,
             ),
-            SizedBox(height: mediaQuery.size.height * 0.03),
+            prefixIcon: Icons.phone_android_outlined,
+            controller: cubit.phoneNumberController,
+            title: localization.phoneNumber,
 
-            // password
-            CustomTextFormField(
-              hintText: localization.password,
-              controller: cubit.passwordController,
-              validator: (value) {
-                return null;
-              },
-              isHiddenPassword: isPasswordVisible,
-              type: TextInputType.visiblePassword,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return localization.enterPhone;
+              }
 
-              suffixIconButton: InkWell(
-                onTap: () {
-                  isPasswordVisible = !isPasswordVisible;
-                  setState(() {});
-                },
-                child: Icon(
-                  isPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                  size: 20.w,
-                ),
+              else if (!RegEx.regphone.hasMatch(value )) {
+                return localization.enterValidphone;
+                
+              }
+               return null;
+            },
+            hintText: localization.enterPhone,
+          ),
+
+          SizedBox(height: 29.h),
+          //password
+          CustomTitleAndCustomField(
+            type:  TextInputType.visiblePassword,
+            hintStyle: AppTextStyle.font14Regular.copyWith(
+              color: AppColor.darkgray,
+            ),
+            isHiddenPassword: isPasswordVisible,
+            suffixIconButton: IconButton(
+              icon: Icon(
+                color: AppColor.darkgray,
+                isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                size: 18.h,
               ),
+              onPressed: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
             ),
+            prefixIcon: Icons.person_2_outlined,
 
-            SizedBox(height: mediaQuery.size.height * 0.02),
+            controller: cubit.passwordController,
+            title: localization.password,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return localization.enterPassword;
+              }
 
-            const LoginListner(),
-          ],
-        ),
+              else if (!RegEx.regpassword.hasMatch(value)) {
+                return localization.enterValidPassword;
+              }
+               return null;
+            },
+            hintText: localization.password,
+          ),
+        ],
       ),
     );
   }

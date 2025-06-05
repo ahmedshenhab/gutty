@@ -1,16 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gutty/core/network/remote/interceptor/app_interceptor.dart';
 import 'package:gutty/core/network/remote/interceptor/logger_interceptor.dart';
-import 'package:gutty/core/services/shared_prefrence/cach_helper.dart';
 import 'package:gutty/module/auth/login/data/repo/login_repo.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:gutty/module/auth/register/data/register_repo.dart';
 import '../network/remote/dio_helper.dart';
-import '../observer/observer.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -24,34 +19,14 @@ final GetIt getIt = GetIt.instance;
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(dio: getIt<Dio>()));
 
   
+   // register
 
-}
+  getIt.registerLazySingleton< RegisterRepo>(() => RegisterRepo(dio: getIt<Dio>()));
 
-Future<void> setupApp() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = MyBlocObserver();
-  // HydratedBloc.storage = await HydratedStorage.build(
-  //   storageDirectory: HydratedStorageDirectory(
-  //     (await getTemporaryDirectory()).path,
-  //   ),
-  // );
   
 
-  await Future.wait([
-    CachHelper.init,
-    ScreenUtil.ensureScreenSize(),
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-     
-    ]),
-     
-
-    
-  ]);
-
-  setupGetIt();
 }
+
 
 // String get getIntialRoute {
 //   final token = CachHelper.getData(key: AppConstant.tokenKey);

@@ -1,8 +1,37 @@
 {
 
-"login":"Login",
-"register":"Register",
+"enterPhone":"Enter your phone number",
+"enterName":"Enter your username",
+"enterPassword":"Enter your password",
+"signIn":"Sign In",
+"signUp":"Sign Up",
+"welcom":"Welcome",
+"dontHaveAccount":"Don't have an account?",
+"alreadyHaveAccount":"Already have an account?",
+"signInToContinue":"Sign In to continue",
+"signUpToContinue":"Sign Up to continue",
+"phoneNumber":" Phone Number",
+"enterValidphone":" Enter a valid phone number",
+"enterValidPassword":"Password must be at least 8 characters long, include uppercase, lowercase, number, and special character",
+
+"userName":"User Name",
 "password":"Password",
-"email":"Email"
+"firstName":"First Name",
+"middleName":"Middle Name",
+"lastName":"Last Name",
+"mainAddress":"Main Address",
+
+"enterMainAddress":"Enter your main address",
+"enterFirstName":"Enter your first name",
+"enterMiddleName":"Enter your middle name",
+"enterLastName":"Enter your last name",
+"inValidEmailOrPassword":"Invalid phone or password",
+"oppsTryLater":"Opps, try again later"
+
+
+
+
+
+
 
 }

@@ -26,7 +26,7 @@ class LoggerInterceptor extends Interceptor {
     log('*** Error ***');
     log('Message: ${err.message}');
     log('Response: ${err.response}');
+    log('Response: ${err.response?.statusCode}');
     super.onError(err, handler);
   }
 }
-

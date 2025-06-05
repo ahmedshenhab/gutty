@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/model/login_request/login_model_request.dart';
+import 'package:gutty/core/app_constant.dart';
+import 'package:gutty/core/services/shared_prefrence/cach_helper.dart';
+import '../data/model/login_request/login_request_model.dart';
 import '../data/repo/login_repo.dart';
 import 'states.dart';
 
@@ -10,57 +12,50 @@ class LoginCubit extends Cubit<MealLoginStates> {
       super(MealLoginIntialState());
 
   final LoginRepo _loginRepo;
-  bool  isLoading = false;
+  bool isLoading = false;
 
   static LoginCubit get(BuildContext context) => BlocProvider.of(context);
-  
 
   void loginUser() async {
-    if (!formState.currentState!.validate()) {
-      
+    if (formState.currentState!.validate()) {
+      emit(MealLoginLoadingState());
+
+      final result = await _loginRepo.loginUser(
+        LoginRequestModel(
+          phoneNumber: phoneNumberController.text,
+          password: passwordController.text,
+        ).toJson(),
+      );
+      result.fold(
+        (l) {
+          emit(MealLoginErrorState(error: l.message ?? ''));
+        },
+        (r)async {
+                 await   CachHelper.setData(key: AppConstant.tokenKey, value: r);
+
+          emit(MealLoginSuccessState());
+          
+        },
+      );
     }
-    emit(MealLoginLoadingState());
-
-    final result = await _loginRepo.loginUser(
-      LoginModelRequest(
-        email: emailController.text,
-        password: passwordController.text,
-      ),
-    );
-    result.fold(
-      (l) {
-        emit(MealLoginErrorState(error: l.message));
-      },
-      (r) {
-        emit(MealLoginSuccessState(loginModelResponse: r));
-      },
-    );
   }
-
- 
 
   // ui
 
   final formState = GlobalKey<FormState>();
-  
-  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
-  bool isPasswordVisible = true;
+  final phoneNumberController = TextEditingController();
 
   void clearform() {
-   
-    emailController.clear();
     passwordController.clear();
+    phoneNumberController.clear();
   }
 
   @override
   Future<void> close() {
-    emailController.dispose();
     passwordController.dispose();
+    phoneNumberController.dispose();
     return super.close();
   }
 }
-
-
-
-

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/di/setup.dart';
+import 'package:gutty/core/lang/localization_service.dart';
 import 'package:gutty/core/routing/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gutty/core/setup.dart';
 import 'package:gutty/core/ui/theme/app_light_theme.dart';
 import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/detail_screen/detail_screen.dart';
-import 'package:gutty/module/layout_screen/layout_screen.dart';
+import 'package:gutty/module/auth/login/meal_login_screen.dart';
 
 void main() async {
   await setupApp();
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
+      designSize: const Size(375, 812),
       builder:
           (_, child) => MaterialApp(
-            locale: const Locale('en'),
             debugShowCheckedModeBanner: false,
             theme: AppLightTheme.lighTheme,
             onGenerateRoute: AppRouter.onGenerateRoute,
@@ -33,8 +33,17 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
+            builder: (context, child) {
+
+               
+               LocalizationService.init(context);
+
+              return child!;
+            },
+
             supportedLocales: S.delegate.supportedLocales,
-            initialRoute: LayoutScreen.routeName,
+
+            initialRoute: LoginScreen.routeName,
           ),
     );
   }
