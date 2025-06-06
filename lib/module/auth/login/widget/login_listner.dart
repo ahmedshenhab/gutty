@@ -18,7 +18,7 @@ class LoginListner extends StatelessWidget {
               current is MealLoginLoadingState,
       listener: (context, state) async {
         if (state is MealLoginSuccessState) {
-          Navigator.pushNamed(context, LayoutScreen.routeName);
+          Navigator.pushNamedAndRemoveUntil(context, LayoutScreen.routeName, (_) => false);
         }
 
         if (state is MealLoginErrorState) {

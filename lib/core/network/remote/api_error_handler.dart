@@ -1,6 +1,7 @@
 
 
 import 'package:dio/dio.dart';
+import 'package:gutty/core/lang/localization_service.dart';
 
 import 'api_error_model.dart';
 
@@ -11,33 +12,33 @@ class ApiErrorHandler implements Exception {
     if (error is DioException) {
       switch (error.type) {
         case DioExceptionType.connectionError:
-          return ApiErrorModel(message: 'connection to error check internet');
+          return ApiErrorModel(message: LocalizationService.strings.error_connection);
 
         case DioExceptionType.connectionTimeout:
-          return ApiErrorModel(message: 'connection timed out with server');
+          return ApiErrorModel(message:  LocalizationService.strings.error_timeout);
 
         case DioExceptionType.cancel:
-          return ApiErrorModel(message: 'request to server was cancelled');
+          return ApiErrorModel(message:  LocalizationService.strings.error_cancelled);
 
         case DioExceptionType.receiveTimeout:
-          return ApiErrorModel(message: 'receive timeout with server');
+          return ApiErrorModel(message:  LocalizationService.strings.error_receive_timeout);
 
         case DioExceptionType.unknown:
           return ApiErrorModel(
-            message: ' connection to server failed due to internet connection',
+            message: LocalizationService.strings.error_unknown,
           );
 
         case DioExceptionType.sendTimeout:
-          return ApiErrorModel(message: 'send timeout with server');
+          return ApiErrorModel(message:  LocalizationService.strings.error_send_timeout);
 
         case DioExceptionType.badResponse:
           return _handleError(error);
 
         default:
-          return ApiErrorModel(message: 'something went wrong');
+          return ApiErrorModel(message: 'unknown error occured');
       }
     } else {
-      return ApiErrorModel(message: 'unknown error occured');
+      return ApiErrorModel(message:  LocalizationService.strings.error_unknown_general);
     }
   }
 }
@@ -45,5 +46,5 @@ class ApiErrorHandler implements Exception {
 ApiErrorModel _handleError(dynamic e) {
 
 
-  return ApiErrorModel(message: 'something went wrong try again');
+  return ApiErrorModel(message:  LocalizationService.strings.error_bad_response);
 }

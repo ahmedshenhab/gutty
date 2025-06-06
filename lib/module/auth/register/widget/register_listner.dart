@@ -13,7 +13,7 @@ class RegisterListner extends StatelessWidget {
     return BlocListener<RegisterCubit, MealRegisterStates>(
       listener: (context, state) {
         if (state is MealRegisterSuccessState) {
-          Navigator.pushNamed(context, LayoutScreen.routeName);
+          Navigator.pushNamedAndRemoveUntil(context, LayoutScreen.routeName, (_) => false);
         }
 
         if (state is MealRegisterErrorState) {

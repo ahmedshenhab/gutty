@@ -53,6 +53,33 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterValidphone": MessageLookupByLibrary.simpleMessage(
       " Enter a valid phone number",
     ),
+    "error_bad_response": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong, try again.",
+    ),
+    "error_cancelled": MessageLookupByLibrary.simpleMessage(
+      "Request to server was cancelled.",
+    ),
+    "error_connection": MessageLookupByLibrary.simpleMessage(
+      "Connection error. Please check your internet.",
+    ),
+    "error_receive_timeout": MessageLookupByLibrary.simpleMessage(
+      "Receive timeout with server.",
+    ),
+    "error_send_timeout": MessageLookupByLibrary.simpleMessage(
+      "Send timeout with server.",
+    ),
+    "error_something_wrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong.",
+    ),
+    "error_timeout": MessageLookupByLibrary.simpleMessage(
+      "Connection timed out with server.",
+    ),
+    "error_unknown": MessageLookupByLibrary.simpleMessage(
+      "Connection failed due to internet connection.",
+    ),
+    "error_unknown_general": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred.",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
     "inValidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
       "Invalid phone or password",

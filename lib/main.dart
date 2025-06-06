@@ -6,9 +6,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gutty/core/setup.dart';
 import 'package:gutty/core/ui/theme/app_light_theme.dart';
 import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/auth/login/meal_login_screen.dart';
+import 'package:gutty/module/layout_screen/layout_screen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await setupApp();
   runApp(const MyApp());
 }
@@ -18,12 +19,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
-      designSize: const Size(375, 812),
+      designSize: const Size(390, 812),
       builder:
-          (_, child) => MaterialApp(
+          (_, __) => MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppLightTheme.lighTheme,
             onGenerateRoute: AppRouter.onGenerateRoute,
@@ -33,17 +35,18 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            builder: (context, child) {
+            supportedLocales: S.delegate.supportedLocales,
+            locale: const Locale('en'),
 
-               
-               LocalizationService.init(context);
+            builder: (context, child) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                LocalizationService.init(context);
+              });
 
               return child!;
             },
+            initialRoute: LayoutScreen.routeName,
 
-            supportedLocales: S.delegate.supportedLocales,
-
-            initialRoute: LoginScreen.routeName,
           ),
     );
   }

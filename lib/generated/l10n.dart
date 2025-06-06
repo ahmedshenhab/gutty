@@ -264,6 +264,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Connection error. Please check your internet.`
+  String get error_connection {
+    return Intl.message(
+      'Connection error. Please check your internet.',
+      name: 'error_connection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection timed out with server.`
+  String get error_timeout {
+    return Intl.message(
+      'Connection timed out with server.',
+      name: 'error_timeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request to server was cancelled.`
+  String get error_cancelled {
+    return Intl.message(
+      'Request to server was cancelled.',
+      name: 'error_cancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout with server.`
+  String get error_receive_timeout {
+    return Intl.message(
+      'Receive timeout with server.',
+      name: 'error_receive_timeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection failed due to internet connection.`
+  String get error_unknown {
+    return Intl.message(
+      'Connection failed due to internet connection.',
+      name: 'error_unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send timeout with server.`
+  String get error_send_timeout {
+    return Intl.message(
+      'Send timeout with server.',
+      name: 'error_send_timeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong, try again.`
+  String get error_bad_response {
+    return Intl.message(
+      'Something went wrong, try again.',
+      name: 'error_bad_response',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong.`
+  String get error_something_wrong {
+    return Intl.message(
+      'Something went wrong.',
+      name: 'error_something_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred.`
+  String get error_unknown_general {
+    return Intl.message(
+      'An unknown error occurred.',
+      name: 'error_unknown_general',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

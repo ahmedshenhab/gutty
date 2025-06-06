@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gutty/core/ui/style/app_font_weight.dart';
 
 class AppTextStyle {
+   AppTextStyle._();
   static TextStyle font12Regular = TextStyle(
     fontSize: 12.sp,
     fontWeight: AppFontWeight.regular,
