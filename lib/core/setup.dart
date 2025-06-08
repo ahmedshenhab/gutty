@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/di/di.dart';
-import 'package:gutty/core/observer/observer.dart';
-import 'package:gutty/core/services/shared_prefrence/cach_helper.dart';
+import 'di/di.dart';
+import 'observer/observer.dart';
+import 'services/shared_prefrence/cach_helper.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 Future<void> setupApp() async {

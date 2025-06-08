@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gutty/core/app_constant.dart';
-import 'package:gutty/core/services/shared_prefrence/cach_helper.dart';
-import 'package:gutty/module/auth/register/data/model/register_request_model.dart';
-import 'package:gutty/module/auth/register/data/register_repo.dart';
+import '../../../../core/app_constant.dart';
+import '../../../../core/services/shared_prefrence/cach_helper.dart';
+import '../data/model/register_request_model.dart';
+import '../data/register_repo.dart';
 import 'states.dart';
 
 class RegisterCubit extends Cubit<MealRegisterStates> {

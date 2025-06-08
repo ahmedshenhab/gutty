@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_font_weight.dart';
+import 'app_font_weight.dart';
 
 class AppTextStyle {
-   AppTextStyle._();
+  AppTextStyle._();
   static TextStyle font12Regular = TextStyle(
     fontSize: 12.sp,
     fontWeight: AppFontWeight.regular,
@@ -34,15 +34,10 @@ class AppTextStyle {
     fontWeight: AppFontWeight.medium,
   );
 
-   
-
-    static TextStyle font16Regular = TextStyle(
+  static TextStyle font16Regular = TextStyle(
     fontSize: 16.sp,
     fontWeight: AppFontWeight.regular,
   );
-
-
-
 
   static TextStyle font18Bold = TextStyle(
     fontSize: 18.sp,
@@ -52,7 +47,7 @@ class AppTextStyle {
     fontSize: 18.sp,
     fontWeight: AppFontWeight.medium,
   );
-   static TextStyle font20Bold = TextStyle(
+  static TextStyle font20Bold = TextStyle(
     fontSize: 20.sp,
     fontWeight: AppFontWeight.bold,
   );
@@ -62,18 +57,16 @@ class AppTextStyle {
     fontWeight: AppFontWeight.regular,
   );
 
+  
   static TextStyle font24Regular = TextStyle(
     fontSize: 24.sp,
     fontWeight: AppFontWeight.regular,
   );
 
-
-    
-    static  TextStyle font24Bold = TextStyle(
+  static TextStyle font24Bold = TextStyle(
     fontSize: 24.sp,
     fontWeight: AppFontWeight.bold,
   );
-
 
   static TextStyle font24Medium = TextStyle(
     fontSize: 24.sp,

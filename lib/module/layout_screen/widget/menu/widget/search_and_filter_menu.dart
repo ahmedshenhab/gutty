@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/reusable/custom_search_field.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
+import '../../../../../core/reusable/custom_search_field.dart';
+import '../../../../../core/ui/style/app_color.dart';
 
 class SearchAndFilterMenu extends StatelessWidget {
   const SearchAndFilterMenu({super.key});

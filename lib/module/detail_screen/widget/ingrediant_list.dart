@@ -1,85 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
+import 'package:gutty/core/reusable/custom_elevated_button.dart';
+import '../../../core/ui/style/app_color.dart';
+import '../../../core/ui/style/app_text_style.dart';
 
 class IngrediantList extends StatelessWidget {
   const IngrediantList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return      SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
-                child: Row(
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        return Padding(
+          padding: EdgeInsetsDirectional.only(bottom: 19.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            children: [
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.62,
+                ),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            'Grilled Chicken ',
-                            style: AppTextStyle.font16Medium,
-                          ),
-                          Text(
-                            '150g',
-                            style: AppTextStyle.font14Regular.copyWith(
-                              color: AppColor.slateGrey,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    Text(
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
 
-                    Row(
-                      spacing: 5.w,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.remove),
-                          style: Theme.of(
-                            context,
-                          ).iconButtonTheme.style!.copyWith(
-                            backgroundColor: WidgetStateProperty.all(
-                              AppColor.grey.withValues(alpha: 0.5),
-                            ),
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.add),
-                          style: Theme.of(
-                            context,
-                          ).iconButtonTheme.style!.copyWith(
-                            iconColor: WidgetStateProperty.all(Colors.white),
-                            backgroundColor: WidgetStateProperty.all(
-                              AppColor.primary,
-                            ),
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      'Grilled Chicken xwkwkvrf ee ',
+                      style: AppTextStyle.font16Medium,
+                    ),
+                    SizedBox(height: 3.h),
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+
+                      '150g',
+                      style: AppTextStyle.font14Regular.copyWith(
+                        color: AppColor.slateGrey,
+                      ),
                     ),
                   ],
                 ),
-              );
-            }, childCount: 10),
-          )
+              ),
 
-       ;
+              Row(
+                children: [
+                  CustomElevatedButton(
+                    bacgroundColor: AppColor.grey100,
+
+                    fixedHeight: 33.h,
+                    fixedwidth: 33.w,
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.remove,
+                      color: AppColor.charcoalGray,
+                    ),
+                  ),
+
+                  SizedBox(width: 12.w),
+                  CustomElevatedButton(
+                    fixedHeight: 33.h,
+                    fixedwidth: 33.w,
+
+                    onPressed: () {},
+                    child: const Icon(Icons.add, color: AppColor.white),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      }, childCount: 10),
+    );
   }
 }

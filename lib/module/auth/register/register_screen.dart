@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gutty/core/reusable/custom_elevated_button.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/auth/login/meal_login_screen.dart';
-import 'package:gutty/module/auth/register/cubit/cubit.dart';
-import 'package:gutty/module/auth/register/cubit/states.dart';
-import 'package:gutty/module/auth/register/widget/register_form.dart';
-import 'package:gutty/module/auth/register/widget/register_listner.dart';
+import '../../../core/reusable/custom_elevated_button.dart';
+import '../../../core/ui/style/app_color.dart';
+import '../../../core/ui/style/app_text_style.dart';
+import '../../../generated/l10n.dart';
+import '../login/meal_login_screen.dart';
+import 'cubit/cubit.dart';
+import 'cubit/states.dart';
+import 'widget/register_form.dart';
+import 'widget/register_listner.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

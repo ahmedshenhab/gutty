@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+	<defs>
+		<clipPath id="clipPath7714315109">
+			<path d="M0 0L20 0L20 20L0 20L0 0Z" fill-rule="nonzero" transform="matrix(1 0 0 1 0 0)"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clipPath7714315109)">
+		<defs>
+			<clipPath id="clipPath9899178482">
+				<path d="M0 0L20 0L20 20L0 20L0 0Z" fill-rule="nonzero" transform="matrix(1 0 0 1 -0 -0)"/>
+			</clipPath>
+		</defs>
+		<g clip-path="url(#clipPath9899178482)">
+			<path d="M-0.625 0C-0.625 0.345175 -0.345175 0.625 0 0.625L11.25 0.625C11.5952 0.625 11.875 0.345175 11.875 0C11.875 -0.345175 11.5952 -0.625 11.25 -0.625L0 -0.625C-0.345175 -0.625 -0.625 -0.345175 -0.625 0ZM-0.625 4.375C-0.625 4.72017 -0.345175 5 0 5L11.25 5C11.5952 5 11.875 4.72017 11.875 4.375C11.875 4.02983 11.5952 3.75 11.25 3.75L0 3.75C-0.345175 3.75 -0.625 4.02983 -0.625 4.375ZM-0.625 8.75C-0.625 9.09517 -0.345175 9.375 0 9.375L11.25 9.375C11.5952 9.375 11.875 9.09517 11.875 8.75C11.875 8.40483 11.5952 8.125 11.25 8.125L0 8.125C-0.345175 8.125 -0.625 8.40483 -0.625 8.75Z" fill-rule="evenodd" transform="matrix(1 0 0 1 6.25 5.625)" fill="rgb(255, 255, 255)"/>
+			<circle cx="0.625" cy="0.625" r="0.625" stroke-width="1.25" transform="matrix(1 0 0 1 2.5 5)" stroke="rgb(255, 255, 255)" fill="transparent"/>
+			<circle cx="0.625" cy="0.625" r="0.625" stroke-width="1.25" transform="matrix(1 0 0 1 2.5 9.375)" stroke="rgb(255, 255, 255)" fill="transparent"/>
+			<circle cx="0.625" cy="0.625" r="0.625" stroke-width="1.25" transform="matrix(1 0 0 1 2.5 13.75)" stroke="rgb(255, 255, 255)" fill="transparent"/>
+		</g>
+	</g>
+</svg>

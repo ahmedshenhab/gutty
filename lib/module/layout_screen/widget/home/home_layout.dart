@@ -2,60 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/module/layout_screen/widget/home/widget/header_home.dart';
+import 'package:gutty/module/layout_screen/widget/home/widget/deliver_options_home.dart';
+import 'package:gutty/module/layout_screen/widget/home/widget/app_bar_home.dart';
+import 'package:gutty/module/layout_screen/widget/home/widget/plan_card_home.dart';
+import '../../../../core/ui/style/app_text_style.dart';
+import 'widget/header_home.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> mealPlans = [
+    final howWorks = [
       {
-        'imagePath': 'assets/images/svg/weekly_fresh.svg',
-        'title': 'Weekly Fresh',
-        'subtitle': 'Perfect for weekly meal planning',
+        'imagePath': 'assets/images/svg/choice_menu.svg',
+        'title': 'Choose Your Plan',
       },
       {
-        'imagePath': 'assets/images/svg/monthly_fresh.svg',
-        'title': 'Monthly Value',
-        'subtitle': 'Best value for regular customers',
+        'imagePath': 'assets/images/svg/shouka.svg',
+        'title': 'Customize Your Meals',
       },
+      {
+        'imagePath': 'assets/images/svg/icon_calender.svg',
+        'title': 'Select Delivery Schedule',
+      },
+      {'imagePath': 'assets/images/svg/carb.svg', 'title': 'Enjoy Fresh Meals'},
     ];
-
     return CustomScrollView(
       slivers: [
         // Custom App Bar
-        SliverAppBar(
-          centerTitle: true,
-          scrolledUnderElevation: 0,
-
-          // pinned: true,
-          expandedHeight: 0,
-          floating: true,
-          actions: [
-            IconButton(
-              style: Theme.of(context).iconButtonTheme.style,
-              onPressed: () {},
-              icon: const Icon(Icons.person_outline),
-            ),
-          ],
-          title: Transform.translate(
-            offset: Offset(0, 6.h),
-            child: SvgPicture.asset(
-              'assets/images/svg/logo.svg',
-              width: 181.w,
-              height: 101.h,
-            ),
-          ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(color: AppColor.grey, height: 1.h),
-          ),
-        ),
-
+        const AppBarHome(),
         // Top spacing
-        SliverToBoxAdapter(child: SizedBox(height: 51.h)),
+        SliverToBoxAdapter(child: SizedBox(height: 50.h)),
 
         // Header Home
         const SliverToBoxAdapter(child: HeaderHome()),
@@ -71,82 +49,72 @@ class HomeLayout extends StatelessWidget {
           ),
         ),
 
-        // Spacing after title
         SliverToBoxAdapter(child: SizedBox(height: 19.h)),
 
         // Meal Plan Cards
-        SliverPadding(
-          padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              final plan = mealPlans[index];
-              return Padding(
-                padding: EdgeInsets.only(
-                  bottom: index < mealPlans.length - 1 ? 16.h : 24.h,
+        const PlanCardHome(),
+
+        const DeliverOptionsHome(),
+        SliverToBoxAdapter(child: SizedBox(height: 32.h)),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 268.h,
+            color: AppColor.grey50,
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 26.h),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(start: 20.w),
+                  child: Text('How It Works', style: AppTextStyle.font20Bold),
                 ),
-                child: MealPlanCard(
-                  imagePath: plan['imagePath']!,
-                  title: plan['title']!,
-                  subtitle: plan['subtitle']!,
+                SizedBox(height: 16.h),
+
+                Padding(
+                  padding: EdgeInsetsDirectional.only(start: 16.w),
+                  child: Column(
+                    children:
+                        howWorks
+                            .map(
+                              (e) => Padding(
+                                padding: EdgeInsetsDirectional.only(
+                                  bottom: 16.h,
+                                ),
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 16.w,
+                                      backgroundColor: AppColor.primary,
+                                      child: SvgPicture.asset(
+                                        colorFilter: const ColorFilter.mode(
+                                          AppColor.white,
+                                          BlendMode.srcIn,
+                                        ),
+                                        e['imagePath']!,
+                                        width: 18.w,
+                                        height: 18.h,
+                                      ),
+                                    ),
+                                    SizedBox(width: 16.w),
+                                    Text(
+                                      e['title']!,
+                                      style: AppTextStyle.font16Medium,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                            .toList(),
+                  ),
                 ),
-              );
-            }, childCount: mealPlans.length),
+              ],
+            ),
           ),
         ),
+
+        SliverToBoxAdapter(child: SizedBox(height: 300.h)),
       ],
-    );
-  }
-}
-
-class MealPlanCard extends StatelessWidget {
-  const MealPlanCard({
-    super.key,
-    required this.imagePath,
-    required this.title,
-    required this.subtitle,
-  });
-
-  final String imagePath;
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsetsDirectional.zero,
-      color: Colors.white,
-      clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-      elevation: 0.1,
-      child: Container(
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
-        width: double.infinity,
-        height: 232.h,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SvgPicture.asset(imagePath, fit: BoxFit.fill, height: 120.h,),
-            SizedBox(height: 19.h),
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: AppTextStyle.font16Bold),
-                  SizedBox(height: 7.h),
-                  Text(
-                    subtitle,
-                    style: AppTextStyle.font14Regular.copyWith(
-                      color: AppColor.charcoalGray,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

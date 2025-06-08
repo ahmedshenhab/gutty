@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/reg_ex.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/auth/custom_title_and_custom_field.dart';
+import '../../../../core/reg_ex.dart';
+import '../../../../core/ui/style/app_color.dart';
+import '../../../../core/ui/style/app_text_style.dart';
+import '../../../../generated/l10n.dart';
+import '../../custom_title_and_custom_field.dart';
 import '../cubit/cubit.dart';
 
 class LoginForm extends StatefulWidget {

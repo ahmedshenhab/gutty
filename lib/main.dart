@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/lang/localization_service.dart';
-import 'package:gutty/core/routing/router.dart';
+import 'core/lang/localization_service.dart';
+import 'core/routing/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gutty/core/setup.dart';
-import 'package:gutty/core/ui/theme/app_light_theme.dart';
-import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/layout_screen/layout_screen.dart';
+import 'core/setup.dart';
+import 'core/ui/theme/app_light_theme.dart';
+import 'generated/l10n.dart';
+import 'module/layout_screen/layout_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
@@ -46,7 +45,6 @@ class MyApp extends StatelessWidget {
               return child!;
             },
             initialRoute: LayoutScreen.routeName,
-
           ),
     );
   }

@@ -1,40 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/module/detail_screen/widget/ingrediant_list.dart';
-import 'package:gutty/module/detail_screen/widget/static_content.dart';
+import 'package:gutty/module/detail_screen/widget/appbar_details_screen.dart';
+import '../../core/ui/style/app_text_style.dart';
+import 'widget/ingrediant_list.dart';
+import 'widget/static_content.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  const DetailScreen({super.key, required this.map, });
   static const routeName = '/detail-screen';
+  final Map<String,String> map;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            scrolledUnderElevation: 0,
-            centerTitle: true,
-            floating: true,
-            title: Text('Meal Detail', style: AppTextStyle.font18Bold),
-            actions: [
-              IconButton(
-                style: Theme.of(context).iconButtonTheme.style,
-                onPressed: () {},
-                icon: const Icon(Icons.favorite_border),
-              ),
-            ],
-          ),
+          // Appbar
+          const AppbarDetailsScreen(),
 
           // Static content section
-          const StaticContent(),
+           StaticContent(map: map,),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                top: 16.h,
+                bottom: 16.h,
+                start: 16.w,
+              ),
+              child: Text('Ingredients', style: AppTextStyle.font18Medium),
+            ),
+          ),
 
           // Ingredients list
-          const IngrediantList(),
-
-          // Optional bottom spacing
-          SliverToBoxAdapter(child: SizedBox(height: 40.h)),
+          SliverPadding(
+            padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
+            sliver: const IngrediantList(),
+          ),
         ],
       ),
     );

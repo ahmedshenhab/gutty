@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/module/layout_screen/widget/home/home_layout.dart';
-import 'package:gutty/module/layout_screen/widget/menu/cubit/menu_cubit.dart';
-import 'package:gutty/module/layout_screen/widget/menu/menu_layout.dart';
-import 'package:gutty/module/layout_screen/widget/subscription_layout.dart';
+import 'package:gutty/core/di/di.dart';
+import 'package:gutty/module/layout_screen/widget/menu/data/repo/repo_menu.dart';
+import '../../core/ui/style/app_color.dart';
+import '../../core/ui/style/app_text_style.dart';
+import 'widget/home/home_layout.dart';
+import 'widget/menu/cubit/menu_cubit.dart';
+import 'widget/menu/menu_layout.dart';
+import 'widget/subscription_layout.dart';
 
 class LayoutScreen extends StatefulWidget {
-  const LayoutScreen({super.key});
+  const LayoutScreen({super.key, });
   static const routeName = '/layout-screen';
+ 
 
   @override
   State<LayoutScreen> createState() => _LayoutScreenState();
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
-  int index = 0;
+  int index = 1;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> screens = [
       const HomeLayout(),
 
-      BlocProvider(create: (context) => MenuCubit(), child: const MenuLayout()),
+      BlocProvider(create: (context) => MenuCubit(repoMenu: getIt<RepoMenu>() ), child: const MenuLayout()),
       const SubscriptionLayout(),
     ];
     List<PreferredSizeWidget?> appBars = [

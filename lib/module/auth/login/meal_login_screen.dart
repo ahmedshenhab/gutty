@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gutty/core/reusable/custom_elevated_button.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/generated/l10n.dart';
-import 'package:gutty/module/auth/login/cubit/cubit.dart';
-import 'package:gutty/module/auth/login/cubit/states.dart';
-import 'package:gutty/module/auth/login/widget/login_listner.dart';
-import 'package:gutty/module/auth/register/register_screen.dart';
+import '../../../core/reusable/custom_elevated_button.dart';
+import '../../../core/ui/style/app_color.dart';
+import '../../../core/ui/style/app_text_style.dart';
+import '../../../generated/l10n.dart';
+import 'cubit/cubit.dart';
+import 'cubit/states.dart';
+import 'widget/login_listner.dart';
+import '../register/register_screen.dart';
 import 'widget/login_form.dart';
 
 class LoginScreen extends StatelessWidget {

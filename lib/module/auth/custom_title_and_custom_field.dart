@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/reusable/custom_text_form_field.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
+import '../../core/reusable/custom_text_form_field.dart';
+import '../../core/ui/style/app_color.dart';
+import '../../core/ui/style/app_text_style.dart';
 
 class CustomTitleAndCustomField extends StatelessWidget {
   const CustomTitleAndCustomField({

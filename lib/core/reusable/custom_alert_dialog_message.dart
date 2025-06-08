@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
+import '../ui/style/app_color.dart';
+import '../ui/style/app_text_style.dart';
 
 void showCustomAlertDialog({
   required BuildContext context,

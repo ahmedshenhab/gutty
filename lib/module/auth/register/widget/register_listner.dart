@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gutty/core/reusable/custom_alert_dialog_message.dart';
-import 'package:gutty/module/auth/register/cubit/cubit.dart';
-import 'package:gutty/module/auth/register/cubit/states.dart';
-import 'package:gutty/module/layout_screen/layout_screen.dart';
+import '../../../../core/reusable/custom_alert_dialog_message.dart';
+import '../cubit/cubit.dart';
+import '../cubit/states.dart';
+import '../../../layout_screen/layout_screen.dart';
 
 class RegisterListner extends StatelessWidget {
   const RegisterListner({super.key});

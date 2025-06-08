@@ -1,8 +1,6 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
+import '../../../../../core/ui/style/app_color.dart';
+import '../../../../../core/ui/style/app_text_style.dart';
 
 class ItemIngredient extends StatelessWidget {
   const ItemIngredient({super.key, required this.text, required this.number});

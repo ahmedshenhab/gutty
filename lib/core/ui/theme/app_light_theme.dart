@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
+import '../style/app_color.dart';
 
 class AppLightTheme {
   static ThemeData lighTheme = ThemeData(

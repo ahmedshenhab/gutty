@@ -1,7 +1,7 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:gutty/core/lang/localization_service.dart';
+import '../../lang/localization_service.dart';
 
 import 'api_error_model.dart';
 

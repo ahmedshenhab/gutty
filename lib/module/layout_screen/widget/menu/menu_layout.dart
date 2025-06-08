@@ -1,20 +1,17 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
-import 'package:gutty/core/ui/style/app_text_style.dart';
-import 'package:gutty/module/layout_screen/widget/menu/cubit/menu_cubit.dart';
-import 'package:gutty/module/layout_screen/widget/menu/widget/item_menu.dart';
-import 'package:gutty/module/layout_screen/widget/menu/widget/search_and_filter_menu.dart';
+import 'package:gutty/module/detail_screen/detail_screen.dart';
+import 'package:gutty/module/layout_screen/widget/menu/widget/category_buttom_menu.dart';
+import 'cubit/menu_cubit.dart';
+import 'widget/item_menu.dart';
+import 'widget/search_and_filter_menu.dart';
 
 class MenuLayout extends StatelessWidget {
   const MenuLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = MenuCubit.get(context);
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -24,75 +21,75 @@ class MenuLayout extends StatelessWidget {
           SizedBox(height: 24.h),
 
           // Categories
-          SizedBox(
-            height: 40.h,
-
-            child: ListView.builder(
-              itemCount: cubit.categories.length,
-              itemBuilder:
-                  (context, index) => Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      start: index == 0 ? 0 : 12.0.w,
-                      end: index == cubit.categories.length - 1 ? 0 : 12.0.w,
-                    ),
-                    child: BlocBuilder<MenuCubit, MenuState>(
-                      buildWhen:
-                          (previous, current) =>
-                              current is ChangeCategoryIndexState ,
-                      builder: (context, state) {
-                        log('indssssssssssex $index');
-                        return GestureDetector(
-                          onTap: () => cubit.changeCategory(index),
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.r),
-                              color:
-                                  cubit.currentCategory == index
-                                      ? AppColor.primary
-                                      : AppColor.grey100,
-                            ),
-
-                            height: 40.h,
-
-                            child: Text(
-                              cubit.categories[index],
-                              style: AppTextStyle.font16Medium.copyWith(
-                                color:
-                                    cubit.currentCategory == index
-                                        ? AppColor.white
-                                        : AppColor.charcoalGray,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
+          const CategoryButtomMenu(),
           SizedBox(height: 20.h),
 
-          Expanded(
-            child: CustomScrollView(
-              slivers: [
-                // Search
-                SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => const ItemMenue(),
-                    childCount: 10,
-                  ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16.w,
-                    mainAxisSpacing: 16.h,
-                    childAspectRatio: 0.325.h,
-                  ),
-                ),
-              ],
-            ),
+          BlocBuilder<MenuCubit, MenuState>(
+            buildWhen:
+                (previous, current) =>
+                    current is MenuLoadingState ||
+                    current is MenuErrorState ||
+                    current is MenuSuccessState,
+            builder: (context, state) {
+              switch (state) {
+                case MenuLoadingState():
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case MenuErrorState():
+                  return Center(child: Text(state.error));
+
+                case MenuSuccessState():
+                  return Expanded(
+                    child: CustomScrollView(
+                      slivers: [
+                        // Search
+                        SliverGrid(
+                          delegate: SliverChildBuilderDelegate((
+                            context,
+                            index,
+                          ) {
+                            const imagePath =
+                                'assets/images/png/m2.png'; // replace with actual data later
+                            final heroTag = 'meal-image-$index';
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  DetailScreen.routeName,
+                                  arguments: {
+                                    'imagePath': imagePath,
+                                    'heroTag': heroTag,
+                                    "meal": state.meals[index],
+
+                                  },
+                                );
+                              },
+
+                              child: ItemMenue(
+                                heroTag: heroTag,
+                                imagePath: imagePath,
+                                meal: state.meals[index],
+                              ),
+                            );
+                          }, childCount: 10),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 16.w,
+                                mainAxisSpacing: 16.h,
+                                childAspectRatio: 0.325.h,
+                              ),
+
+                        ),
+                      ],
+                    ),
+                  );
+
+                default:
+                  return const SizedBox.shrink();
+              }
+            },
           ),
         ],
       ),

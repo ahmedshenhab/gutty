@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:gutty/core/lang/localization_service.dart';
-import 'package:gutty/core/network/remote/api_endpoint.dart';
-import 'package:gutty/core/network/remote/api_error_handler.dart';
-import 'package:gutty/core/network/remote/api_error_model.dart';
+import '../../../../../core/lang/localization_service.dart';
+import '../../../../../core/network/remote/api_endpoint.dart';
+import '../../../../../core/network/remote/api_error_handler.dart';
+import '../../../../../core/network/remote/api_error_model.dart';
 import '../model/login_response/login_response_model.dart';
 
 class LoginRepo {

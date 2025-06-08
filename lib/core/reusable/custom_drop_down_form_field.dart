@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gutty/core/ui/style/app_color.dart';
+import '../ui/style/app_color.dart';
 
 class CustomDropDownFormField<T> extends StatelessWidget {
   const CustomDropDownFormField({
