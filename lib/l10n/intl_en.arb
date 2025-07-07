@@ -37,6 +37,14 @@
   "error_bad_response": "Something went wrong, try again.",
   "error_something_wrong": "Something went wrong.",
   "error_unknown_general": "An unknown error occurred."
+  ,"error_connection_timeout": "Connection timed out. Please try again.",
+"error_default": "An unexpected error occurred.",
+"error_unknown_occurred": "An unknown error occurred.",
+"error_bad_request": "Bad request. Please check your input.",
+"error_unauthorized": "Unauthorized access. Please login again.",
+"error_forbidden": "Access forbidden.",
+"error_not_found": "Resource not found.",
+"error_server": "Internal server error."
 
 
 

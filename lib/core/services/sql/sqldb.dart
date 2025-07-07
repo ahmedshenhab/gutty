@@ -53,11 +53,11 @@ class DatabaseHelper {
     return result.map((json) => CartItem.fromJson(json)).toList();
   }
 
-  deleteAll()async{
+  Future<void> deleteAll()async{
     final db = await database;
      db.delete('cart');
   }
-  deleteRow(int id)async{
+  Future<void> deleteRow(int id)async{
     final db = await database;
      db.delete('cart',where: 'id=?',whereArgs: [id]);
   }

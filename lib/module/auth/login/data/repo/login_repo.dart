@@ -23,12 +23,12 @@ class LoginRepo {
         return right( token);
       }
 
-      return left(ApiErrorModel(message:  LocalizationService.strings.oppsTryLater ));
+      return left(ApiErrorModel(message:  LocalizationService.instance.strings.oppsTryLater ));
 
       
     } catch (e) {
       if (e is DioException && e.response?.statusCode == 400) {
-        return left(ApiErrorModel(message:  LocalizationService.strings.inValidEmailOrPassword ));
+        return left(ApiErrorModel(message:  LocalizationService.instance.strings.inValidEmailOrPassword ));
       }
       return left(ApiErrorHandler.handle(e));
     }

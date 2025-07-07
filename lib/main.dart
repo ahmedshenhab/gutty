@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       designSize: const Size(390, 812),
       builder:
-          (_, __) => MaterialApp(
+          (_, _) => MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppLightTheme.lighTheme,
             onGenerateRoute: AppRouter.onGenerateRoute,
@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
             locale: const Locale('en'),
 
             builder: (context, child) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                LocalizationService.init(context);
-              });
+             final localizations = S.of(context);
+            LocalizationService.instance.updateLocalizations(localizations);
+
 
               return child!;
             },
@@ -49,3 +49,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

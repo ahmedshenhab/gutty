@@ -1,14 +1,34 @@
-import 'package:flutter/material.dart';
 import '../../generated/l10n.dart';
 
 class LocalizationService {
-  //private
-   LocalizationService._();
-  static late S _localizations;
-
-  static void init(BuildContext context) {
-    _localizations = S.of(context);
+  LocalizationService._();
+  
+  static LocalizationService? _instance;
+  static LocalizationService get instance {
+    _instance ??= LocalizationService._();
+    return _instance!;
   }
-
-  static S get strings => _localizations;
+  
+  S? _localizations;
+  
+  void updateLocalizations(S localizations) {
+    _localizations = localizations;
+  }
+  
+  
+  S get strings {
+    if (_localizations == null) {
+      throw Exception('LocalizationService not initialized. Call updateLocalizations first.');
+    }
+    return _localizations!;
+  }
+  
+  
+  S? get stringsOrNull => _localizations;
+  
+  
+  bool get isInitialized => _localizations != null;
+  
+  
+ 
 }

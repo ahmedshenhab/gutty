@@ -84,15 +84,15 @@ class ItemMenue extends StatelessWidget {
             ),
             child: Column(
               children: List.generate(
-                meal.recipeIngredients?.length ?? 0,
+                meal.recipeIngredients?.take(6).length ?? 0,
                 (index) => Padding(
                   padding: EdgeInsets.only(bottom: 5.h),
                   child: ItemIngredient(
                     text:
-                        meal.recipeIngredients?[index].ingredientId
-                            .toString() ??
+                        meal.recipeIngredients?.take(6).toList()[index].name ??
                         'default',
-                    number: '${meal.recipeIngredients?[index].quantity}g',
+                    number:
+                        '${meal.recipeIngredients?.take(6).toList()[index].quantity}g',
                   ),
                 ),
               ),

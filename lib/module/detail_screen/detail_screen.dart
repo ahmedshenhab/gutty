@@ -8,7 +8,7 @@ import 'widget/static_content.dart';
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.map, });
   static const routeName = '/detail-screen';
-  final Map<String,String> map;
+  final Map<String, dynamic> map;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class DetailScreen extends StatelessWidget {
           // Ingredients list
           SliverPadding(
             padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
-            sliver: const IngrediantList(),
+            sliver:  IngrediantList(meal:map['meal'] ,),
           ),
         ],
       ),

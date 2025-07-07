@@ -6,7 +6,7 @@ import 'nutrition_fact.dart';
 
 class StaticContent extends StatelessWidget {
   const StaticContent({super.key, required this.map});
-  final Map<String, String> map;
+  final Map<String, dynamic> map;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class StaticContent extends StatelessWidget {
               children: [
                 SizedBox(height: 18.h),
                 Text(
-                  'Grilled Chicken Quinoa Bowl',
+                  map['meal'].name ?? 'default',
                   style: AppTextStyle.font22Medium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -60,7 +60,7 @@ class StaticContent extends StatelessWidget {
             ),
           ),
 
-          const NutritionFacts(),
+           NutritionFacts(meal:  map['meal'],),
         ],
       ),
     );

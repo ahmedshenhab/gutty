@@ -22,7 +22,7 @@ class RegisterRepo {
         
       }
 
-      return left(ApiErrorModel(message: LocalizationService.strings.oppsTryLater ));
+      return left(ApiErrorModel(message: LocalizationService.instance.strings.oppsTryLater ));
     } catch (e) {
       if (e is DioException && e.response?.statusCode == 400) {
         final errorList = e.response?.data;

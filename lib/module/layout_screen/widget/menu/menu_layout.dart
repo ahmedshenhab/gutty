@@ -12,7 +12,6 @@ class MenuLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -33,11 +32,11 @@ class MenuLayout extends StatelessWidget {
             builder: (context, state) {
               switch (state) {
                 case MenuLoadingState():
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return const Expanded(
+                    child: Center(child: CircularProgressIndicator()),
                   );
                 case MenuErrorState():
-                  return Center(child: Text(state.error));
+                  return Expanded(child: Center(child: Text(state.error)));
 
                 case MenuSuccessState():
                   return Expanded(
@@ -61,7 +60,6 @@ class MenuLayout extends StatelessWidget {
                                     'imagePath': imagePath,
                                     'heroTag': heroTag,
                                     "meal": state.meals[index],
-
                                   },
                                 );
                               },
@@ -78,9 +76,9 @@ class MenuLayout extends StatelessWidget {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 16.w,
                                 mainAxisSpacing: 16.h,
-                                childAspectRatio: 0.325.h,
-                              ),
 
+                                childAspectRatio: 0.37,
+                              ),
                         ),
                       ],
                     ),

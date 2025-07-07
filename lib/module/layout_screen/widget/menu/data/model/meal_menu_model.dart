@@ -15,10 +15,9 @@ class MealMenuModel {
       fibers: (json['fibers'] as num?)?.toInt(),
       type: json['type'] as int?,
       imageUrls: (json['imageUrls'] as List?)?.cast<String>(),
-      recipeIngredients:
-          (json['recipeIngredients'] as List?)
-              ?.map((e) => RecipeIngredient.fromJson(e))
-              .toList(),
+      recipeIngredients: (json['recipeIngredients'] as List?)
+          ?.map((e) => RecipeIngredient.fromJson(e))
+          .toList(),
       weightToPriceRatio: (json['weightToPriceRatio'] as num?)?.toInt(),
     );
   }
@@ -39,14 +38,7 @@ class MealMenuModel {
     this.recipeIngredients,
     this.weightToPriceRatio,
   });
-  
-  static List<MealMenuModel> fromJsonList(Map<String, dynamic> json) {
-    final items = json['items'] as List<dynamic>?;
 
-    if (items == null) return [];
-
-    return items.map((item) => MealMenuModel.fromJson(item)).toList();
-  }
   final String? id;
   final String? name;
   final String? nameAr;
@@ -63,6 +55,14 @@ class MealMenuModel {
   final List<RecipeIngredient>? recipeIngredients;
   final int? weightToPriceRatio;
 
+  static List<MealMenuModel> fromJsonList(Map<String, dynamic> json) {
+    final items = json['items'] as List<dynamic>?;
+
+    if (items == null) return [];
+
+    return items.map((item) => MealMenuModel.fromJson(item)).toList();
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -78,25 +78,45 @@ class MealMenuModel {
       'fibers': fibers,
       'type': type,
       'imageUrls': imageUrls,
-      'recipeIngredients': recipeIngredients?.map((e) => e.toJson()).toList(),
+      'recipeIngredients':
+          recipeIngredients?.map((e) => e.toJson()).toList(),
       'weightToPriceRatio': weightToPriceRatio,
     };
   }
 }
 
 class RecipeIngredient {
+
   factory RecipeIngredient.fromJson(Map<String, dynamic> json) {
     return RecipeIngredient(
       ingredientId: json['ingredientId'],
+      name: json['name'],
+      nameAr: json['nameAr'],
       quantity: (json['quantity'] as num?)?.toInt(),
+      isOptional: json['isOptional'] ?? false,
     );
   }
+  RecipeIngredient({
+    this.ingredientId,
+    this.name,
+    this.nameAr,
+    this.quantity,
+    this.isOptional = false,
+  });
 
-  RecipeIngredient({this.ingredientId, this.quantity});
   final int? ingredientId;
+  final String? name;
+  final String? nameAr;
   final int? quantity;
+  final bool isOptional;
 
   Map<String, dynamic> toJson() {
-    return {'ingredientId': ingredientId, 'quantity': quantity};
+    return {
+      'ingredientId': ingredientId,
+      'name': name,
+      'nameAr': nameAr,
+      'quantity': quantity,
+      'isOptional': isOptional,
+    };
   }
 }

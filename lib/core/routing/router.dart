@@ -34,7 +34,7 @@ class AppRouter {
               ),
         );
       case DetailScreen.routeName:
-        final map = setting.arguments as Map<String,String>;
+        final map = setting.arguments as Map<String, dynamic>;
 
         return MaterialPageRoute(
           builder:

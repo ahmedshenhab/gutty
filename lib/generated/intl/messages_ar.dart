@@ -23,11 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
-      "لديك حساب بالفعل؟",
+      "هل لديك حساب بالفعل؟",
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "enterFirstName": MessageLookupByLibrary.simpleMessage("أدخل اسمك الأول"),
-    "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم عائلتك"),
+    "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم العائلة"),
     "enterMainAddress": MessageLookupByLibrary.simpleMessage(
       "أدخل عنوانك الرئيسي",
     ),
@@ -36,13 +36,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterPassword": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
     "enterPhone": MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
     "enterValidPassword": MessageLookupByLibrary.simpleMessage(
-      "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، وتتضمن حرف كبير وصغير ورقم ورمز خاص",
+      "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير وصغير ورقم ورمز خاص",
     ),
     "enterValidphone": MessageLookupByLibrary.simpleMessage(
-      "أدخل رقم هاتف صحيح",
+      "أدخل رقم هاتف صالح",
+    ),
+    "error_bad_request": MessageLookupByLibrary.simpleMessage(
+      "طلب غير صالح. يرجى التحقق من البيانات المدخلة.",
     ),
     "error_bad_response": MessageLookupByLibrary.simpleMessage(
-      "حدث خطأ ما، حاول مرة أخرى.",
+      "حدث خطأ ما، يرجى المحاولة مرة أخرى.",
     ),
     "error_cancelled": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء الطلب إلى الخادم.",
@@ -50,11 +53,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_connection": MessageLookupByLibrary.simpleMessage(
       "خطأ في الاتصال. يرجى التحقق من الإنترنت.",
     ),
+    "error_connection_timeout": MessageLookupByLibrary.simpleMessage(
+      "انتهت مهلة الاتصال. يرجى المحاولة مرة أخرى.",
+    ),
+    "error_default": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع."),
+    "error_forbidden": MessageLookupByLibrary.simpleMessage("الدخول مرفوض."),
+    "error_not_found": MessageLookupByLibrary.simpleMessage(
+      "المورد غير موجود.",
+    ),
     "error_receive_timeout": MessageLookupByLibrary.simpleMessage(
-      "انتهت مهلة استقبال البيانات من الخادم.",
+      "انتهت مهلة استلام البيانات من الخادم.",
     ),
     "error_send_timeout": MessageLookupByLibrary.simpleMessage(
       "انتهت مهلة إرسال البيانات إلى الخادم.",
+    ),
+    "error_server": MessageLookupByLibrary.simpleMessage(
+      "خطأ في الخادم الداخلي.",
     ),
     "error_something_wrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما.",
@@ -62,10 +76,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_timeout": MessageLookupByLibrary.simpleMessage(
       "انتهت مهلة الاتصال بالخادم.",
     ),
+    "error_unauthorized": MessageLookupByLibrary.simpleMessage(
+      "دخول غير مصرح. يرجى تسجيل الدخول مرة أخرى.",
+    ),
     "error_unknown": MessageLookupByLibrary.simpleMessage(
-      "فشل الاتصال بالخادم بسبب مشكلة في الإنترنت.",
+      "فشل الاتصال بسبب مشكلة في الإنترنت.",
     ),
     "error_unknown_general": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير معروف.",
+    ),
+    "error_unknown_occurred": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير معروف.",
     ),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -76,19 +96,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "mainAddress": MessageLookupByLibrary.simpleMessage("العنوان الرئيسي"),
     "middleName": MessageLookupByLibrary.simpleMessage("الاسم الأوسط"),
     "oppsTryLater": MessageLookupByLibrary.simpleMessage(
-      "عذراً، حاول مرة أخرى لاحقاً",
+      "عذرًا، حاول مرة أخرى لاحقًا",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
-    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
+    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signInToContinue": MessageLookupByLibrary.simpleMessage(
-      "سجل دخولك للمتابعة",
+      "سجّل الدخول للمتابعة",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpToContinue": MessageLookupByLibrary.simpleMessage(
-      "أنشئ حساباً للمتابعة",
+      "أنشئ حسابًا للمتابعة",
     ),
     "userName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
-    "welcom": MessageLookupByLibrary.simpleMessage("مرحباً"),
+    "welcom": MessageLookupByLibrary.simpleMessage("مرحبًا"),
   };
 }

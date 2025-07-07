@@ -354,6 +354,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Connection timed out. Please try again.`
+  String get error_connection_timeout {
+    return Intl.message(
+      'Connection timed out. Please try again.',
+      name: 'error_connection_timeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred.`
+  String get error_default {
+    return Intl.message(
+      'An unexpected error occurred.',
+      name: 'error_default',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred.`
+  String get error_unknown_occurred {
+    return Intl.message(
+      'An unknown error occurred.',
+      name: 'error_unknown_occurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bad request. Please check your input.`
+  String get error_bad_request {
+    return Intl.message(
+      'Bad request. Please check your input.',
+      name: 'error_bad_request',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unauthorized access. Please login again.`
+  String get error_unauthorized {
+    return Intl.message(
+      'Unauthorized access. Please login again.',
+      name: 'error_unauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access forbidden.`
+  String get error_forbidden {
+    return Intl.message(
+      'Access forbidden.',
+      name: 'error_forbidden',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resource not found.`
+  String get error_not_found {
+    return Intl.message(
+      'Resource not found.',
+      name: 'error_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal server error.`
+  String get error_server {
+    return Intl.message(
+      'Internal server error.',
+      name: 'error_server',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
